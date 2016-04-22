@@ -1,91 +1,111 @@
 <?php
 
-class Class_Ads {
+class class_ads {
     private $advID;
     private $content="";
     private $priority;
     private $attachment="";
     private $category="";
     private $viewsNumbers;
-    private $expirationDate="";
+ //   private $expirationDate="";
        public  function __construct() {
 
         } // End of constructor
-    public function Set_advID($advID)
+    public function set_AdvID($advID)
 {
+ if (is_numeric($advID)) {     
 $this -> advID = $advID;
+return TRUE;
+ } // end of if 
+ else  {
+     return FALSE;
+     
+ } // end of else
 } // End of function
 
-public function Set_content($content)
+public function set_Content($content)
 {
 $this ->  content = $content;
 } // End of function
 
-public function Set_priority($priority)
+public function set_Priority($priority)
 {
+ if (is_numeric($priority)) {     
 $this -> priority = $priority;
-} // End of function
+return TRUE;
+ } // end of if 
+ else  {
+     return FALSE;
+     
+ } // end of else
+ } // End of function
 
-public function Set_attachment($attachment)
+public function set_Attachment($attachment)
 {
 $this -> attachment = $attachment;
 } // End of function
-   public function Set_category($category)
+   public function set_Category($category)
 {
 $this -> category = $category;
 } // End of function
 
-public function Set_viewsNumbers($viewsNumbers)
+public function set_ViewsNumbers($viewsNumbers)
 {
-$this ->  viewsNumbers = $viewsNumbers;
-} // End of function
-
-public function Set_expirationDate($expirationDate)
+ if (is_numeric($viewsNumbers)) {     
+$this -> viewsNumbers = $viewsNumbers;
+return TRUE;
+ } // end of if 
+ else  {
+     return FALSE;
+     
+ } // end of else
+ } // End of function
+/*
+public function set_ExpirationDate($expirationDate)
 {
 $this -> expirationDate = $expirationDate;
 } // End of function
-
-public function Get_advID()
+*/
+public function get_AdvID()
 {
 return $this ->  advID;
 } // End of function
 
 
-public function Get_content()
+public function get_Content()
 {
 return $this ->  content;
 } // End of function
 
 
-public function Get_priority()
+public function get_Priority()
 {
 return $this -> priority;
 } // End of function
 
-public function Get_attachment()
+public function get_Attachment()
 {
 return $this -> attachment;
 } // End of function
 
-public function Get_category()
+public function get_Category()
 {
 return $this ->  category;
 } // End of function
 
 
-public function Get_viewsNumbers()
+public function get_ViewsNumbers()
 {
 return $this ->  viewsNumbers;
 } // End of function
 
-
-public function Get_exipireDate()
+/*
+public function get_ExipireDate()
 {
 return $this -> exipireDate;
 } // End of function
+*/
 
-public function Get_name()
-{
-return $this -> name;
-} // End of function
+
 } //End of class
+
