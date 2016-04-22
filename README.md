@@ -1,2 +1,2 @@
 # project
-This is the main repository 
+This is the main repository {directory}
