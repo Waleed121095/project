@@ -1,5 +1,6 @@
 <?php
 include_once 'Class_Stuff.php';
+//hello 
 class Class_Disk extends Class_Stuff{
     public  function __construct() {
  
