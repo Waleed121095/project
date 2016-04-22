@@ -10,6 +10,12 @@ class class_database {
 	private $databaseConnection
 
 	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
 
 // Methods
 
