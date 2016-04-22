@@ -8,7 +8,11 @@ class class_database {
 	private $password		= "estama"	
 	private $databaseName	= "CMSdatabase" // Content Managemnet System database
 	private $databaseConnection
-	private $yaseer  // new value
+<<<<<<< HEAD
+=======
+
+	// TahaMagdy ^_^
+>>>>>>> d7c34c66d862f890d3fb0f26e358fd6b8f9114ee
 
 // Methods
 
