@@ -9,6 +9,7 @@ class class_database {
 	private $databaseName	= "CMSdatabase" // Content Managemnet System database
 	private $databaseConnection
 
+	// TahaMagdy ^_^
 
 // Methods
 
