@@ -8,13 +8,10 @@ class class_database {
 	private $password		= "estama"	
 	private $databaseName	= "CMSdatabase" // Content Managemnet System database
 	private $databaseConnection
-	// TahaMagdy ^_^
 
-	// TahaMagdy ^_^
-	// TahaMagdy ^_^
-	// TahaMagdy ^_^
-	// TahaMagdy ^_^
-//Yasser Test
+
+
+
 // Methods
 
 // Constructor
