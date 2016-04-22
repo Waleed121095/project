@@ -1,11 +1,11 @@
 <?php
-include_once 'Class_Stuff.php';
-class Class_Disk extends Class_Stuff{
+include_once 'class_stuff.php';
+class class_disk extends class_stuff{
     public  function __construct() {
  
         
         } // End of constructor
-        public function Retouch($text){
+        public function retouch($text){
 
             
             

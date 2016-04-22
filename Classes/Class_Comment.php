@@ -1,6 +1,6 @@
 <?php
 
-class Class_Comment {
+class class_comment {
     private $date="";
     private $content="";
     private $state="";
@@ -9,37 +9,38 @@ class Class_Comment {
  
         
         } // End of constructor
-    public function Set_date($date)
+    public function set_Date($date)
 {
 $this -> date = $date;
 } // End of function
 
-public function Set_state($state)
+public function set_State($state)
 {
 $this -> state = $state;
 } // End of function
 
-public function Set_content($content)
+public function set_Content($content)
 {
 $this -> content = $content;
 } // End of function
 
 
-public function Get_state()
+public function get_State()
 {
 return $this -> state;
 } // End of function
 
 
-public function Get_content()
+public function get_Content()
 {
 return $this -> content;
 } // End of function
 
-public function Get_date()
+public function get_Date()
 {
 return $this -> date;
 } // End of function
 
 } // End of class
+
 

@@ -1,7 +1,7 @@
 <?php
-include_once 'Class_Person.php';
+include_once 'class_person.php';
 
-class Class_User extends Class_Person{
+class class_user extends class_person{
     
     private $userID ;
     
@@ -9,34 +9,42 @@ class Class_User extends Class_Person{
         
         } // End of constructor
     
-public function Set_userID($userID)
+public function set_UserID($userID)
 {
+ if (is_numeric($userID)) {     
 $this -> userID = $userID;
-} // End of function
+return TRUE;
+ } // end of if 
+ else  {
+     return FALSE;
+     
+ } // end of else
+ } // End of function
 
-public function Get_userID()
+public function get_UserID()
 {
 return $this -> userID;
 } // End of function
 
-public function Comment_Article($Comment){
+public function comment_Article($comment){
 
     
     } // End of function
-        public function Reguest_Ads($Ads){
+        public function reguest_Ads($ads){
 
             
     } // End of function
-        public function Download_Article($Article){
+        public function download_Article($article){
 
             
     } // End of function
-        public function Register($Person){
+        public function register($person){
 
             
     } // End of function
-        public function Pay(){
+        public function pay(){
 
             
     } // End of function
 } // End of class
+

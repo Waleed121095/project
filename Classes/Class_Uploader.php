@@ -1,14 +1,15 @@
 <?php
-include_once 'Class_Stuff.php';
+include_once 'class_stuff.php';
 
-class Class_Uploader extends Class_Stuff{
+class class_uploader extends class_stuff{
     public  function __construct() {
  
         
         } // End of constructor
-        public function Publish($text){
+        public function publish($text){
 
             
     } // End of function
     
 }       // End of class}
+

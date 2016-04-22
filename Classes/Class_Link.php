@@ -1,6 +1,6 @@
 <?php
     
-class Class_Link {
+class class_link {
     private $linkID;
     private $title="";
     private $path="";
@@ -10,45 +10,52 @@ class Class_Link {
         
         } // End of constructor
         
- public function Set_linkID($linkID)
+ public function set_LinkID($linkID)
 {
+ if (is_numeric($linkID)) {     
 $this -> linkID = $linkID;
-} // End of function
+return TRUE;
+ } // end of if 
+ else  {
+     return FALSE;
+     
+ } // end of else
+ } // End of function
 
-public function Set_path($path)
+public function set_Path($path)
 {
 $this ->  path = $path;
 } // End of function
 
-public function Set_title($title)
+public function set_Title($title)
 {
 $this -> title = $title;
 } // End of function
 
-public function Set_permission($permission)
+public function set_Permission($permission)
 {
 $this -> permission = $permission;
 } // End of function
 
 
-public function Get_permission()
+public function get_Permission()
 {
 return $this ->  permission;
 } // End of function
 
 
-public function Get_path()
+public function get_Path()
 {
 return $this ->  path;
 } // End of function
 
 
-public function Get_title()
+public function get_Title()
 {
 return $this -> title;
 } // End of function
 
-public function Get_linkID()
+public function get_LinkID()
 {
 return $this -> linkID;
 } // End of function
@@ -63,3 +70,4 @@ return $this -> linkID;
         
         
         
+
