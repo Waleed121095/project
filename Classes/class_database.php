@@ -12,7 +12,16 @@ class class_database {
 =======
 
 	// TahaMagdy ^_^
+<<<<<<< HEAD
 >>>>>>> d7c34c66d862f890d3fb0f26e358fd6b8f9114ee
+=======
+	// TahaMagdy ^_^
+
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+	// TahaMagdy ^_^
+>>>>>>> 6324c487290ab42f9d3a91df96949ad223cdb68a
 
 // Methods
 
