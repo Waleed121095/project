@@ -1,5 +1,4 @@
 <?php
-// no thing to do 
 
 include_once 'class_stuff.php';
 class class_supervisor extends class_stuff {

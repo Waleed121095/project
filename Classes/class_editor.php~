@@ -1,5 +1,5 @@
 <?php
-// no thing to do 
+
 include_once 'class_stuff.php';
 class class_editor extends class_stuff {
 
