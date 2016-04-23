@@ -6,7 +6,7 @@ class class_database {
 	private $host			= "localhost";
 	private $userName		= "taha"; 			// This is default value, You can overwrite is 
 	private $password		= "estama";			// This is default value, You can overwrite is 	
-	private $databaseName	= "CMSdatabase"; 	// Content Managemnet System database
+	private $databaseName		= "CMSdatabase"; 		// Content Managemnet System database
 	private $databaseConnection;
 
 
@@ -16,7 +16,7 @@ class class_database {
 
 // Constructor
 public function __construct () 	// 1) Open mysql connection 
-								// 2) Select the database whose name is filled in the $databaseName Attribute
+				// 2) Select the database whose name is filled in the $databaseName Attribute
 	{
 
 		$this->databaseConnection = $this->database_connect ( $this->host, $this->userName, $this->password );
@@ -29,9 +29,9 @@ public function __construct () 	// 1) Open mysql connection
 private function database_connect ( $host, $userName, $password )
 	{
 	
-		if 	(
+		if (
 				$this->databaseConnection = mysql_connect ( $host, $userName, $password )
-		    ) // end if connection is established
+		   ) // end if connection is established
 			return $databaseConnection;
 
 		else
