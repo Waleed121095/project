@@ -23,6 +23,7 @@ class class_person {
 	private $joinDate;
 
 
+
 // Methods
 public function login ()
 	{
