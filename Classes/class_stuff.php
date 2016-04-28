@@ -16,7 +16,7 @@ class class_stuff extends class_person {
     {
             if (is_numeric($fCutOff))
             {
-                $this->$cuttOff = $fCutOff;
+                $this->cuttOff = $fCutOff;
                 return TRUE;
             }// end if
             else
@@ -27,7 +27,7 @@ class class_stuff extends class_person {
     }// end of setCuttOff
     public function getCuttOff( )
     {
-        return $this->$cuttOff;
+        return $this->cuttOff;
         
     }// end of getCutOff
     
@@ -35,7 +35,7 @@ class class_stuff extends class_person {
     {
             if (is_numeric($fBasicSalary) && $fBasicSalary <200000)
             {
-                $this->$basicSalary = $fBasicSalary;
+                $this->basicSalary = $fBasicSalary;
                 return TRUE;
             }// end if
             else 
@@ -46,14 +46,14 @@ class class_stuff extends class_person {
     
     public function getBasicSalary ( )
     {
-            return $this->$basicSalary;
+            return $this->basicSalary;
     }// end of getBasicSalary
     
      public function setNewSalary ($fNewSalary)
     {
             if (is_numeric($fNewSalary) && $fNewSalary <200000)
             {
-                $this->$newSalary = $fNewSalary;
+                $this->newSalary = $fNewSalary;
                 return TRUE;
             }// end if
             else 
@@ -64,7 +64,7 @@ class class_stuff extends class_person {
     
     public function getNewSalary ( )
     {
-            return $this->$newSalary;
+            return $this->newSalary;
     }// end of getNewSalary
     
     
@@ -72,7 +72,7 @@ class class_stuff extends class_person {
     {
             if (is_numeric($fBounce) && $fBounce <2000)
             {
-                $this->$bounce = $fBounce;
+                $this->bounce = $fBounce;
                 return TRUE;
             }// end if
             else 
@@ -83,7 +83,7 @@ class class_stuff extends class_person {
     
     public function getBounce ( )
     {
-            return $this->$bounce;
+            return $this->bounce;
     }// end of getBounce
     
    

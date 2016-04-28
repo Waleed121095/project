@@ -17,38 +17,37 @@ class class_person {
 	private $street;
 	private $city;
 	private $country;
-	private $day;// what is this ?
-	private $month;//what is this ?
-	private $year;//what is this ?
-        private $birthDate ; // new added by me 
+	private $day;
+	private $month;
+	private $year;
         private $joinDate;
 
 // Methods
  public function setSSN ( $fSSN )
         {
-                        if(!ctype_digit($ssn)|| strlen($ssn)<10)
+                        if(!ctype_digit($fSSN)|| strlen($fSSN)<10)
                         {
                             return FALSE;  
                         }//end if 
                         else {
-                            $this->$SSN = $fSSN;
+                            $this->SSN = $fSSN;
                             return TRUE;
                         }// end else
     
         }//end setSSN($ssn)
  public function getSSN ( )
         {
-                    return $this-> $SSN;
+                    return $this->SSN;
         }
 
  public function setUserName ( $fUserName )
         {
-                        $this->$userName = $fUserName;
+                        $this->userName = $fUserName;
                         return TRUE;
         }
  public function getUserName ( )
         {
-                    return $this->$userName;
+                    return $this->userName;
         }
  public function setAge ( $fAge )  
         {
@@ -59,42 +58,42 @@ class class_person {
                         }
                         else
                         {
-                            $this->$age = $fAge;
+                            $this->age = $fAge;
                             return TRUE;
                         }
         }//end of setAge
  public function getAge ( )
         {
-                    return $this->$age;
+                    return $this->age;
         }  // end of getAge  
  public function  setStreet ( $fStreet )
         {
-                        $this->$street = $fStreet;
+                        $this->street = $fStreet;
                         return TRUE;
         }// end of setStreet()
  public function getStreet ( )
         {
-                    return $this->$street ;
+                    return $this->street ;
         }
  public function  setCity ( $fCity )
         {
-                        $this->$city =$fCity;
+                        $this->city =$fCity;
                         return TRUE;
         }//end of setCity
  public function getCity ( )
         {
-                    return $this->$city ;
+                    return $this->city ;
         }//end of getCity
         
  public function setCountry ( $fCountry )
         {
-                        $this->$country = $fCountry;
+                        $this->country= $fCountry;
                         return True;
         }//end of setCountry
         
  public function getCountry ( )
         {
-                    return $this-> $country;
+                    return $this->country;
         }  // end of getCountry
         
  public function setEmail ( $fEmail )
@@ -105,13 +104,13 @@ class class_person {
                         }
                         else
                         {
-                            $this->$email = $fEmail ; 
+                            $this->email = $fEmail ; 
                             return TRUE;
                         }// end else
         }// end of setEmail
  public function getEmail ( )
         {
-                    return $this->$email ;
+                    return $this->email ;
         }      
  public function  setFirstName ( $fFirstName )
         {
@@ -121,14 +120,14 @@ class class_person {
                         }
                         else 
                         {
-                            $this->$firstName = $fFirstName;
+                            $this->firstName = $fFirstName;
                             return TRUE;
                         }    
         }// end of setFirstName
         
  public function getFirstName ( )
         {
-                    return $this->$firstName ;
+                    return $this->firstName ;
         } //end of getFirstName
         
  public function  setSecondName ( $fSecondName )
@@ -139,14 +138,14 @@ class class_person {
                         }
                         else 
                         {
-                            $this->$secondName = $fSecondName;
+                            $this->secondName = $fSecondName;
                             return TRUE;
                         }    
         }// end of setSecondName
         
  public function getSecondName ( )
         {
-                    return $this->$secondName ;
+                    return $this->secondName ;
         } // end of getSecondName
              
  public function  setLastName ( $fLastName )
@@ -157,35 +156,35 @@ class class_person {
                         }
                         else 
                         {
-                            $this->$lastName = $fLastName;
+                            $this->lastName = $fLastName;
                             return TRUE;
                         }    
         }// end of setLastName
   public function getLastName ( )
         {
-                    return $this->$lastName ;
+                    return $this->lastName ;
         }  // end of getLastName    
         
  public function  setGender ( $fGender )
         {
-                        $this->$gender = $fGender ; 
+                        $this->gender = $fGender ; 
                         return True ;
         }//end of setGender ** the gender type is enum type in HTML form
         
  public function getGender ( )
         {
-                    return $this->$gender;
+                    return $this->gender;
         }// end of getGender
         
  public function setJoinDate ( $fJoinDate )
         {
-                        $this->$joinDate= $fJoinDate; 
+                        $this->joinDate= $fJoinDate; 
                         return TRUE;
         } // end of setJoinDate
         
   public function getJoinDate ( )
         {
-                    return $this->$joinDate ;
+                    return $this->joinDate ;
         }//end of getJoinDate
         
  public function  setPasswd ( $fPasswd )
@@ -196,21 +195,21 @@ class class_person {
                         } 
                         else
                         {
-                            $this ->$passwd = $fPasswd;
+                            $this ->passwd = $fPasswd;
                             return TRUE;
                         }// end else 
         }// end of setPasswd()
    
 public function getPasswd ( )
         {
-                    return $this->$passwd;
+                    return $this->passwd;
         }//end of getPasswd
         
 public function  setPhone ( $fPhone )
         {
                         if(is_numeric($fPhone))
                         {
-                            $this-> $phone = $fPhone;
+                            $this->phone = $fPhone;
                             return TRUE;
                         }
                         else
@@ -220,19 +219,42 @@ public function  setPhone ( $fPhone )
         }// end of setPhone
 public function getPhone ( )
         {
-                    return $this->$phone ;
+                    return $this->phone ;
         }// end of getPhone
         
-public function  setBirthDate ( $fBirthDate )
+public function  setBirthDay ( $fBirthDay )
         {
-                        $this->$birthDate = $fBirthDate;
+                        $this->birthDay = $fBirthDay;
                         return TRUE;
-        }// end of setBirthDate ()
+        }// end of setBirthDay ()
         
-public function getBirthDate ( )
+public function getBirthDay ( )
         {
-                    return $this-> $birthDate;
-        }// end of getBirhDate
+                    return $this->birthDay;
+        }// end of getBirhDay
+        
+public function  setBirthMonth ( $fBirthMonth )
+        {
+                        $this->month = $fBirthMonth;
+                        return TRUE;
+        }// end of setBirthMonth ()
+        
+public function getBirthMonth ( )
+        {
+                    return $this->birthMonth;
+        }// end of getBirhMontn
+
+public function  setBirthYear ( $fBirthYear )
+        {
+                        $this->year = $fBirthYear;
+                        return TRUE;
+        }// end of setBirthYear ()
+        
+public function getBirthYear ( )
+        {
+                    return $this->year;
+        }// end of getBirhDate        
+        
         
 public function login ()
 	{
