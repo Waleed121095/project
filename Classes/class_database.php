@@ -38,7 +38,7 @@ private function database_connect ( $host, $userName, $password )
 			return $connectionReturned;
 
 		else
-			die("Database error!");
+			die("Database connection error!");
 
 	} // end database_connect()	
 
@@ -82,13 +82,15 @@ private function clean ( $string )
 	} // end clean()
 
 
-// Pre:  The $database_query Must be cleaned by clean().
-// Post: Query result is returneda.
 public function database_query ( $database_query )
 	{
+		$database_query = $this->clean( $database_query ); // cleaning
+		$result_query 	= mysql_query ( $database_query ); // querying 
 
-		$result_query = mysql_query ( $database_query );
-		return $result_query;
+		if ( !$result_query ) 
+					die( 'Invalid query: ' . mysql_error() );
+		else
+					return $result_query;
 
 	} // end database_query()
 
@@ -99,18 +101,21 @@ public function select_query ( $columns, $tableName, $condition="" )
 	{
 		$columns   = $this->clean ( $columns   );
 		$tableName = $this->clean ( $tableName );
+		$condition = $this->clean ( $condition );
 
 		$select = "select " . $columns . " from " . $tableName;
-		if ( $condition == "" )
+		if ( $condition == "" ) 
+			{
 															echo "$select<br>";
-//			return $this->database_query( $select ); 
+			return $this->database_query( $select . ";" ); 
+				
+			} // end if
 			
 		else {
 			
-		 $condition = $this->clean ( $condition );
 			$select .= " where " . $condition;
 															echo "$select<br>";
-//			return $this->database_query( $select );
+			return $this->database_query( $select . ";" );
 		} // end else	
 
 	
@@ -140,11 +145,38 @@ public function update_query ( $tableName, $data_array_assoc, $where="")
 		
 	} // end update_query()
 
+
+
+
+public function insert_query (  /*object or array*/ )
+	{
+
+	
+		
+	} // end insert_query()	
+
+
+
+///////////////////////
 } // end class_database	
+///////////////////////
 
 
 
 
 
+// This is just for testing;
+////////////// ////////////// ////////////// //////////////
 $obj = new class_database();
-$obj->select_query( "*", "column1 , column1", "id > 2" );
+$res = $obj->select_query( "*", "address", "addressChildID < 3" );
+
+
+while ( $ar = mysql_fetch_assoc( $res ) ) {
+echo $ar['addressChildID'] . "<br>";
+echo $ar['addressName'] . "<br>";
+
+}
+
+$class_methods = get_class_methods('class_database');
+foreach ($class_methods as $method_name) 
+    echo "$method_name<br>";
