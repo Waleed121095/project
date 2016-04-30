@@ -571,7 +571,7 @@ CREATE TABLE `news` (
   `reomveDate` text,
   `publishDate` text NOT NULL,
   `category` text NOT NULL,
-  `state` tinyint(4) NOT NULL,
+  `appearState` tinyint(4) NOT NULL,
   `retouchState` tinyint(4) DEFAULT NULL,
   `linkID` int(11) DEFAULT NULL,
   `viewsNumber` int(11) NOT NULL,
@@ -599,4 +599,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-30 23:10:25
+-- Dump completed on 2016-04-30 23:21:14
