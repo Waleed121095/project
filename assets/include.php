@@ -6,4 +6,4 @@
 
 session_start();
 
-?>
+// connect database

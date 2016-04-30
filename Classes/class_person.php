@@ -187,15 +187,16 @@ class class_person {
                     return $this->joinDate ;
         }//end of getJoinDate
         
- public function  setPasswd ( $fPasswd )
+ public function  setPasswd ( $passwd )
         {
-                        if(!strlen($fPasswd)> 8 )
+                        if(!strlen( $passwd ) >= 8 )
                         {
                             return FALSE;
                         } 
                         else
                         {
-                            $this ->passwd = $fPasswd;
+							
+                            $this ->passwd = sha1 ( $passwd ); // Hashing the password
                             return TRUE;
                         }// end else 
         }// end of setPasswd()
@@ -204,6 +205,8 @@ public function getPasswd ( )
         {
                     return $this->passwd;
         }//end of getPasswd
+
+
         
 public function  setPhone ( $fPhone )
         {

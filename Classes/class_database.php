@@ -6,7 +6,8 @@ class class_database {
 	private $host			= "localhost";
 	private $userName		= "taha"; 			// This is default value, You can overwrite is 
 	private $password		= "estama";			// This is default value, You can overwrite is 	
-	private $databaseName		= "CMSdatabase"; 		// Content Managemnet System database
+	private $databaseName		= "projectJournal3"; 		// Content Managemnet System database
+															// This name can be changed!
 	private $databaseConnection;
 
 
@@ -20,8 +21,9 @@ public function __construct () 	// 1) Open mysql connection
 	{
 
 		$this->databaseConnection = $this->database_connect ( $this->host, $this->userName, $this->password );
-		$this->database_selectDB ( $this->databaseName );
-
+// ********
+//		$this->database_selectDB ( $this->databaseName );
+// ********
 	} // end __construct	
 
 
@@ -47,7 +49,7 @@ private function database_selectDB ( $databaseName )
 		if (
 				$select = mysql_select_db  ( $databaseName, $this->databaseConnection  )
 		   )  // end if database is selected
-			return $selectl; // boolean
+			return $select; // boolean
 		else
 			die ( "No Database is selected" );
 
@@ -91,6 +93,30 @@ public function database_query ( $database_query )
 
 
 
+// $columns : can be a coulmn name or many columns names with comma separated or can be `*`.
+public function select_query ( $columns, $tableName, $condition="" )
+	{
+		//$columns   = clean ( $columns   );
+		//$tableName = clean ( $tableName );
+
+		$select = "select " . $columns . " from " . $tableName;
+		if ( $condition == "" )
+			echo "$select<br>";
+//			return database_query( $select ); 
+			
+		else {
+			
+		// $condition = clean ( $condition );
+			$select .= " where " . $condition;
+			echo "$select<br>";
+//			return database_query( $select );
+		} // end else	
+
+	
+	} // end select_query
+	
+
+
 public function insert_query ( $tableName, $data_aray_assoc )
 	{
 		// Please, read this comment and remove it when you code!
@@ -115,4 +141,9 @@ public function update_query ( $tableName, $data_array_assoc, $where="")
 
 } // end class_database	
 
-?>
+
+
+
+
+$obj = new class_database();
+$obj->select_query( "*", "column1 , column1", "id > 2" );
