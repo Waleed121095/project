@@ -102,14 +102,14 @@ public function select_query ( $columns, $tableName, $condition="" )
 		$select = "select " . $columns . " from " . $tableName;
 		if ( $condition == "" )
 			echo "$select<br>";
-//			return database_query( $select ); 
+//			return $this->database_query( $select ); 
 			
 		else {
 			
 		 $condition = $this->clean ( $condition );
 			$select .= " where " . $condition;
 			echo "$select<br>";
-//			return database_query( $select );
+//			return $this->database_query( $select );
 		} // end else	
 
 	

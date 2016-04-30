@@ -542,7 +542,7 @@ CREATE TABLE `address` (
   UNIQUE KEY `adressName` (`addressName`),
   KEY `addressParentID` (`addressParentID`),
   CONSTRAINT `address_ibfk_1` FOREIGN KEY (`addressParentID`) REFERENCES `Address` (`addressChildID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -551,6 +551,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` VALUES (1,'lalla',NULL),(2,'lalla2',NULL),(3,'lalla3',NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -570,7 +571,7 @@ CREATE TABLE `news` (
   `reomveDate` text,
   `publishDate` text NOT NULL,
   `category` text NOT NULL,
-  `state` text NOT NULL,
+  `state` tinyint(4) NOT NULL,
   `linkID` int(11) DEFAULT NULL,
   `viewsNumber` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -597,4 +598,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-29  0:36:37
+-- Dump completed on 2016-04-30 18:55:33
