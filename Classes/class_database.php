@@ -96,8 +96,8 @@ public function database_query ( $database_query )
 // $columns : can be a coulmn name or many columns names with comma separated or can be `*`.
 public function select_query ( $columns, $tableName, $condition="" )
 	{
-		//$columns   = clean ( $columns   );
-		//$tableName = clean ( $tableName );
+		$columns   = $this->clean ( $columns   );
+		$tableName = $this->clean ( $tableName );
 
 		$select = "select " . $columns . " from " . $tableName;
 		if ( $condition == "" )
@@ -106,7 +106,7 @@ public function select_query ( $columns, $tableName, $condition="" )
 			
 		else {
 			
-		// $condition = clean ( $condition );
+		 $condition = $this->clean ( $condition );
 			$select .= " where " . $condition;
 			echo "$select<br>";
 //			return database_query( $select );
