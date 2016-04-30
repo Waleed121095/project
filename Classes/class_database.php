@@ -16,13 +16,14 @@ class class_database {
 // ii) Methods
 
 // Constructor
+// As soon as you object is made -> Database connection is established and database is selected.
 public function __construct () 	// 1) Open mysql connection 
 				// 2) Select the database whose name is filled in the $databaseName Attribute
 	{
 
 		$this->databaseConnection = $this->database_connect ( $this->host, $this->userName, $this->password );
 // ********
-//		$this->database_selectDB ( $this->databaseName );
+		$this->database_selectDB ( $this->databaseName );
 // ********
 	} // end __construct	
 
@@ -32,9 +33,9 @@ private function database_connect ( $host, $userName, $password )
 	{
 	
 		if (
-				$this->databaseConnection = mysql_connect ( $host, $userName, $password )
+				$connectionReturned = mysql_connect ( $host, $userName, $password )
 		   ) // end if connection is established
-			return $databaseConnection;
+			return $connectionReturned;
 
 		else
 			die("Database error!");
@@ -101,14 +102,14 @@ public function select_query ( $columns, $tableName, $condition="" )
 
 		$select = "select " . $columns . " from " . $tableName;
 		if ( $condition == "" )
-			echo "$select<br>";
+															echo "$select<br>";
 //			return $this->database_query( $select ); 
 			
 		else {
 			
 		 $condition = $this->clean ( $condition );
 			$select .= " where " . $condition;
-			echo "$select<br>";
+															echo "$select<br>";
 //			return $this->database_query( $select );
 		} // end else	
 
