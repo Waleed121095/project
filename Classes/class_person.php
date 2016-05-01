@@ -27,13 +27,13 @@ class class_person {
  public function setPersonTypeID ( $personTypeID )
 	{
 
-		$this->personTypeID = $personTypeID;
+		$this->$personTypeID = $personTypeID;
 		
 	} // end setPersonTypeID()	
 
  public function getPersonTypeID ( )
 	{
-		return $this->personTypeID;
+		return $this->$personTypeID;
 	} // end getPersonTypeID()	
 	
  public function setSSN ( $fSSN )

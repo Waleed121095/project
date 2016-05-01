@@ -52,7 +52,7 @@ private function database_selectDB ( $databaseName )
 		   )  // end if database is selected
 			return $select; // boolean
 		else
-			die ( "No Database is selected" );
+			die ( "No Database is selected!" );
 
 	} // end database_selectDB()	
 
@@ -84,7 +84,6 @@ private function clean ( $string )
 
 public function database_query ( $database_query )
 	{
-		$database_query = $this->clean( $database_query ); // cleaning
 		$result_query 	= mysql_query ( $database_query ); // querying 
 
 		if ( !$result_query ) 
@@ -122,38 +121,63 @@ public function select_query ( $columns, $tableName, $condition="" )
 	} // end select_query
 	
 
+//INSERT INTO table_name (column1,column2,column3,...)
+//VALUES (value1,value2,value3,...);
 
+// $ar = array ( "colName" => "1" .. // inserting a number
+// $ar = array ( "colName" =. "'string'" ... // inserting a string 
 public function insert_query ( $tableName, $data_aray_assoc )
 	{
-		// Please, read this comment and remove it when you code!
-		// Hello Ahmed, You should take the following into your work.
-		// $data_aray_assoc is an associative array.
-			// Its key is the column name, and Its value is the data
-		// 1 ) This fucntion returns `true`  when insertion is correct.
-		 	// this means that you will execute the query.
-		// 2 ) This function returns `False` when insertion is no done.
+		$insert  = "INSERT INTO $tableName ";
+		$columns = " ( ";
+		$values  = " VALUES ( ";
+
+	// (column1, ... ,column n )
+		foreach ( $data_aray_assoc as $key => $value )
+			$columns .= " $key, ";	
+
+		$columns  = rtrim ( $columns, ", " ); // Removing the last comma.
+		$columns .= " )";					  // Closing the parentheses.
+
+	// (value1, ... ,value n )
+		foreach ( $data_aray_assoc as $value )
+				$values .= "$value, ";	
+
+		$values  = rtrim ( $values, ", " );
+		$values .= " )";
+
+	// building query
+		$insert .= $columns . $values . ";"; 
+
+// Executing query
+//$this->database_query( $insert );
+
+// testing
+return $insert;
 	} // end insert_query()
 
 
 
 public function update_query ( $tableName, $data_array_assoc, $where="")
 	{
-		// Please, read this comment and remove it when you code!
-		// 1 ) This fucntion execute the update quey after generating it, and Return `ture`
-		// else
-		// 2 ) This function returns `False` when insertion is no done.
-		
+		$updateQuery = "UPDATE $tableName SET ";
+
+		foreach ( $data_array_assoc as $key => $value )
+			$updateQuery .= " $key = $value, ";			
+
+		$updateQuery  = rtrim ( $updateQuery, ", " );
+		$updateQuery .= " WHERE $where;";
+
+// Executing query
+$this->database_query ( $updateQuery );
+
+// testing
+return $updateQuery;	
+
 	} // end update_query()
 
 
 
-
-public function insert_query (  /*object or array*/ )
-	{
-
-	
-		
-	} // end insert_query()	
 
 
 
@@ -168,15 +192,25 @@ public function insert_query (  /*object or array*/ )
 // This is just for testing;
 ////////////// ////////////// ////////////// //////////////
 $obj = new class_database();
-$res = $obj->select_query( "*", "address", "addressChildID < 3" );
 
 
-while ( $ar = mysql_fetch_assoc( $res ) ) {
-echo $ar['addressChildID'] . "<br>";
-echo $ar['addressName'] . "<br>";
+// testing update
+//$ar = array ( "content" => "'B|'", "priority" => "098765432" );
+//echo $obj->update_query( "ads", $ar, "advID = 120"  );
 
-}
 
-$class_methods = get_class_methods('class_database');
-foreach ($class_methods as $method_name) 
-    echo "$method_name<br>";
+// testing insert
+//$asso = array ( "content" => "'content'", "advID" => "2" );
+//echo $obj->insert_query( "ads", $asso );
+
+// testing select_qury
+//$res = $obj->select_query( "*", "address", "addressChildID < 3" );
+//while ( $ar = mysql_fetch_assoc( $res ) ) {
+//echo $ar['addressChildID'] . "<br>";
+//echo $ar['addressName'] . "<br>";
+
+//}
+
+//$class_methods = get_class_methods('class_database');
+//foreach ($class_methods as $method_name) 
+ //   echo "$method_name<br>";
