@@ -1,7 +1,7 @@
 <?php
 
 class class_person {
-	
+ 
 // Attributes
 	private $ID;
 	private $userName;
