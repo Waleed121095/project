@@ -20,8 +20,9 @@ class class_person {
 	private $day;
 	private $month;
 	private $year;
-	private $personTypeID;
-        private $joinDate;
+	private $joinDate;
+        private $personTypeID;
+        
 
 // Methods
  public function setPersonTypeID ( $personTypeID )
@@ -284,7 +285,6 @@ public function logout ( )
 	{
 		
 	} // end logout()	
-
 
 } // end class_person
 
