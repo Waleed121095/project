@@ -5,7 +5,7 @@ class class_person {
 // Attributes
 	private $ID;
 	private $userName;
-	private $passwd;
+	private $password;
 	private $firstName;
 	private $secondName;
 	private $lastName;
@@ -13,28 +13,24 @@ class class_person {
 	private $email;
 	private $gender;
 	private $SSN;
-	private $phone;
-	private $street;
-	private $city;
-	private $country;
-	private $day;
-	private $month;
-	private $year;
+	private $birthDay;
+	private $birthMonth;
+	private $birthYear;
 	private $joinDate;
-        private $personTypeID;
+	private $personTypeID;
         
 
 // Methods
  public function setPersonTypeID ( $personTypeID )
 	{
 
-		$this->$personTypeID = $personTypeID;
+		$this->personTypeID = $personTypeID;
 		
 	} // end setPersonTypeID()	
 
  public function getPersonTypeID ( )
 	{
-		return $this->$personTypeID;
+		return $this->personTypeID;
 	} // end getPersonTypeID()	
 	
  public function setSSN ( $fSSN )
@@ -80,35 +76,6 @@ class class_person {
         {
                     return $this->age;
         }  // end of getAge  
- public function  setStreet ( $fStreet )
-        {
-                        $this->street = $fStreet;
-                        return TRUE;
-        }// end of setStreet()
- public function getStreet ( )
-        {
-                    return $this->street ;
-        }
- public function  setCity ( $fCity )
-        {
-                        $this->city =$fCity;
-                        return TRUE;
-        }//end of setCity
- public function getCity ( )
-        {
-                    return $this->city ;
-        }//end of getCity
-        
- public function setCountry ( $fCountry )
-        {
-                        $this->country= $fCountry;
-                        return True;
-        }//end of setCountry
-        
- public function getCountry ( )
-        {
-                    return $this->country;
-        }  // end of getCountry
         
  public function setEmail ( $fEmail )
         {
@@ -201,43 +168,29 @@ class class_person {
                     return $this->joinDate ;
         }//end of getJoinDate
         
- public function  setPasswd ( $passwd )
+
+///////// Setters and Getters
+ public function  setPasswd ( $password )
         {
-                        if(!strlen( $passwd ) >= 8 )
+                        if(!strlen( $password) >= 8 )
                         {
                             return FALSE;
                         } 
                         else
                         {
 							
-                            $this ->passwd = sha1 ( $passwd ); // Hashing the password
+                            $this ->password = sha1 ( $password); // Hashing the password
                             return TRUE;
                         }// end else 
         }// end of setPasswd()
    
 public function getPasswd ( )
         {
-                    return $this->passwd;
+                    return $this->password;
         }//end of getPasswd
 
 
         
-public function  setPhone ( $fPhone )
-        {
-                        if(is_numeric($fPhone))
-                        {
-                            $this->phone = $fPhone;
-                            return TRUE;
-                        }
-                        else
-                        {
-                            return FALSE;
-                        } //end else   
-        }// end of setPhone
-public function getPhone ( )
-        {
-                    return $this->phone ;
-        }// end of getPhone
         
 public function  setBirthDay ( $fBirthDay )
         {
@@ -272,10 +225,77 @@ public function getBirthYear ( )
                     return $this->year;
         }// end of getBirhDate        
         
+///////// end Setters and Getters
         
-public function login ()
+
+
+
+public function retrieveObjectData ( )
 	{
-                        // Writen you code here!
+		if ( is_numeric ( $this->ID ) )
+			 {
+				include_once 'class_database.php';
+				$database = new class_database();
+				$selectQuery = "SELECT * FROM person WHERE ID = $ID " . ";";
+
+
+				$result = $database->getRow( $selectQuery );
+
+		// Filling the object after login
+				$this->ID 				= $result['ID'];
+				$this->firstNam			= $result['firstName'];
+				$this->secondNa			= $result['secondName'];
+				$this->lastName			= $result['lastName'];
+				$this->age				= $result['age'];
+				$this->email			= $result['email'];
+				$this->gender			= $result['gender'];
+				$this->SSN				= $result['SSN'];
+				$this->day				= $result['birthDay'];
+				$this->month			= $result['birthMonth'];
+				$this->birthYear		= $result['birthYear'];
+				$this->joinDate			= $result['joinDate'];
+//				$this->$personTypeID	= $result['personTypeID']; // null
+		
+			 	
+			 } // end if	
+		
+	} // end retrieveObjectData()	
+
+
+
+
+
+
+// 1 ) Use setters to set `userName` and `password`
+// 2 ) In case of true
+		// login will set the `ID` in the object and returns true
+		// else returns false
+// After True Login, Use retrieveObjectData() to fill the person data.
+public function login ( )
+	{
+		include_once 'class_database.php';
+		$database = new class_database;
+////	$database->clean( $this->userName );
+////	$database->clean( $this->password);
+
+$selectLogin = "SELECT * FROM person WHERE userName = '$this->userName' AND password = '$this->password';";
+		$result = $database->database_query ( $selectLogin );
+
+// testing
+//echo "ROW NUMBER = " . $database->result_row_number( $result );
+
+
+		if ( $database->result_row_number ( $result ) == 1 )
+			{
+				// $row is an associative array of a row of person
+				$row = $database->getRow ( $selectLogin );
+				$this->ID = $row['ID']; 
+				return true;
+			} // end if	
+
+
+		else
+			return false;
 
 	} // end login()
 
@@ -286,7 +306,22 @@ public function logout ( )
 		
 	} // end logout()	
 
+///////////////////////
 } // end class_person
+///////////////////////
 
 
-?>
+
+// This is just for testing;
+////////////// ////////////// ////////////// //////////////
+
+$obj = new class_person();
+
+
+// testing login
+//$obj->setUserName( "taha"  );
+//$obj->setPasswd  ( "passwd");
+
+$obj->login();
+//$obj->retrieveObjectData( );
+//echo $obj->getSSN();
