@@ -29,6 +29,7 @@ public function __construct () 	// 1) Open mysql connection
 
 
 
+// Retruns connection!
 private function database_connect ( $host, $userName, $password )
 	{
 	
@@ -43,7 +44,7 @@ private function database_connect ( $host, $userName, $password )
 	} // end database_connect()	
 
 
-
+// returns ture or die
 private function database_selectDB ( $databaseName )
 	{
 
@@ -69,7 +70,7 @@ public function database_close ()
 
 // Pre:  Non cleaned string is passed. { Queries, Passwords, ... }
 // Post: Clean string is returned.
-private function clean ( $string )
+public function clean ( $string )
 	{
 
 		$string = trim         ( $string ); // Remove whitespaces form both sides.
@@ -83,6 +84,7 @@ private function clean ( $string )
 
 
 // It's public temporary !
+// return tables; need to be fetched ;
 public function database_query ( $database_query )
 	{
 		$result_query 	= mysql_query ( $database_query ); // querying 
@@ -97,6 +99,7 @@ public function database_query ( $database_query )
 
 
 // $columns : can be a coulmn name or many columns names with comma separated or can be `*`.
+// select_query returns associative array.array
 public function select_query ( $columns, $tableName, $condition="" )
 	{
 		$columns   = $this->clean ( $columns   );
@@ -106,7 +109,8 @@ public function select_query ( $columns, $tableName, $condition="" )
 		$select = "select " . $columns . " from " . $tableName;
 		if ( $condition == "" ) 
 			{
-															echo "$select<br>";
+//testing
+//echo "$select<br>";
 			return $this->database_query( $select . ";" ); 
 				
 			} // end if
@@ -114,8 +118,9 @@ public function select_query ( $columns, $tableName, $condition="" )
 		else {
 			
 			$select .= " where " . $condition;
-															echo "$select<br>";
-			return $this->database_query( $select . ";" );
+//testing
+//echo "$select<br>";
+			return mysql_fetch_assoc ( $this->database_query( $select . ";" ) );
 		} // end else	
 
 	
@@ -127,6 +132,7 @@ public function select_query ( $columns, $tableName, $condition="" )
 
 // $ar = array ( "colName" => "1" .. // inserting a number
 // $ar = array ( "colName" =. "'string'" ... // inserting a string 
+// returns the query [ testing ]
 public function insert_query ( $tableName, $data_aray_assoc )
 	{
 		$insert  = "INSERT INTO $tableName ";
@@ -151,7 +157,7 @@ public function insert_query ( $tableName, $data_aray_assoc )
 		$insert .= $columns . $values . ";"; 
 
 // Executing query
-//$this->database_query( $insert );
+$this->database_query( $insert );
 
 // testing
 return $insert;
@@ -159,6 +165,7 @@ return $insert;
 
 
 
+// returns the query [ testing ]
 public function update_query ( $tableName, $data_array_assoc, $condition)
 	{
 		$updateQuery = "UPDATE $tableName SET ";
@@ -178,18 +185,39 @@ return $updateQuery;
 	} // end update_query()
 
 
+// returns associative array.
+public function getRow ( $selectQuery )
+	{
+		$selectQuery = strtoupper ( $selectQuery ); // To make the strstr() easy!
+		if ( !strstr( $selectQuery, "LIMIT" ) )
+			{
+			$selectQuery = rtrim ( $selectQuery, ";" );
+			$selectQuery  .= " LIMIT 0,1;"; // Ensuring to get one row
+			} // end if
 
-public function delete_query ( $tableName, $condition )
-	 {
+		$result = $this->database_query ( $selectQuery );
 
-		$deleteQuery = "delete from $tableName where " . $condition . ";";
+// testing
+//echo $selectQuery;
 
-$this->database_query ( $deleteQuery );
+		if ( !$result )
+			die ( "Database error in function getRow()" );
 
-// Testing..
-return $deleteQuery;
 
-	 } // end delete_query()	
+		else
+			return mysql_fetch_assoc ( $result );
+
+	} // end getRow()	
+
+
+
+
+
+public function result_row_number ( $result )
+	{
+	 	return mysql_num_rows ( $result );	
+	} // end result_row_number()	
+
 
 
 
@@ -204,8 +232,12 @@ return $deleteQuery;
 
 // This is just for testing;
 ////////////// ////////////// ////////////// //////////////
-$obj = new class_database();
+//$obj = new class_database();
 
+// testing getRow()
+//$ar = $obj->getRow( "select * from ads;" );
+//echo $ar['advID'];
+//echo $ar['content'];
 
 // testing delete
 //echo $obj->delete_query( "ads", "true" );
@@ -221,9 +253,8 @@ $obj = new class_database();
 
 // testing select_qury
 //$res = $obj->select_query( "*", "address", "addressChildID < 3" );
-//while ( $ar = mysql_fetch_assoc( $res ) ) {
-//echo $ar['addressChildID'] . "<br>";
-//echo $ar['addressName'] . "<br>";
+//echo $res['addressChildID'] . "<br>";
+//echo $res['addressName'] . "<br>";
 
 //}
 
