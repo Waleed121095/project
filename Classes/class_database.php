@@ -82,6 +82,7 @@ private function clean ( $string )
 	} // end clean()
 
 
+// It's public temporary !
 public function database_query ( $database_query )
 	{
 		$result_query 	= mysql_query ( $database_query ); // querying 
@@ -158,7 +159,7 @@ return $insert;
 
 
 
-public function update_query ( $tableName, $data_array_assoc, $where="")
+public function update_query ( $tableName, $data_array_assoc, $condition)
 	{
 		$updateQuery = "UPDATE $tableName SET ";
 
@@ -166,7 +167,7 @@ public function update_query ( $tableName, $data_array_assoc, $where="")
 			$updateQuery .= " $key = $value, ";			
 
 		$updateQuery  = rtrim ( $updateQuery, ", " );
-		$updateQuery .= " WHERE $where;";
+		$updateQuery .= " WHERE $condition;";
 
 // Executing query
 $this->database_query ( $updateQuery );
@@ -177,6 +178,18 @@ return $updateQuery;
 	} // end update_query()
 
 
+
+public function delete_query ( $tableName, $condition )
+	 {
+
+		$deleteQuery = "delete from $tableName where " . $condition . ";";
+
+$this->database_query ( $deleteQuery );
+
+// Testing..
+return $deleteQuery;
+
+	 } // end delete_query()	
 
 
 
@@ -194,9 +207,12 @@ return $updateQuery;
 $obj = new class_database();
 
 
+// testing delete
+//echo $obj->delete_query( "ads", "true" );
+
 // testing update
-//$ar = array ( "content" => "'B|'", "priority" => "098765432" );
-//echo $obj->update_query( "ads", $ar, "advID = 120"  );
+$ar = array ( "content" => "'B|'", "priority" => "098765432" );
+echo $obj->update_query( "ads", $ar, "advID = 120"  );
 
 
 // testing insert
