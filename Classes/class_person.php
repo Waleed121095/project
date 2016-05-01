@@ -229,7 +229,7 @@ public function getBirthYear ( )
         
 
 
-
+// Used after True login, To fill its object with the login data.
 public function retrieveObjectData ( )
 	{
 		if ( is_numeric ( $this->ID ) )
@@ -315,13 +315,13 @@ public function logout ( )
 // This is just for testing;
 ////////////// ////////////// ////////////// //////////////
 
-$obj = new class_person();
+//$obj = new class_person();
 
 
 // testing login
 //$obj->setUserName( "taha"  );
 //$obj->setPasswd  ( "passwd");
 
-$obj->login();
+//$obj->login();
 //$obj->retrieveObjectData( );
 //echo $obj->getSSN();
