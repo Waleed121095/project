@@ -20,9 +20,22 @@ class class_person {
 	private $day;
 	private $month;
 	private $year;
+	private $personTypeID;
         private $joinDate;
 
 // Methods
+ public function setPersonTypeID ( $personTypeID )
+	{
+
+		$this->personTypeID = $personTypeID;
+		
+	} // end setPersonTypeID()	
+
+ public function getPersonTypeID ( )
+	{
+		return $this->personTypeID;
+	} // end getPersonTypeID()	
+	
  public function setSSN ( $fSSN )
         {
                         if(!ctype_digit($fSSN)|| strlen($fSSN)<10)
