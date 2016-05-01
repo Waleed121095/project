@@ -211,8 +211,8 @@ $obj = new class_database();
 //echo $obj->delete_query( "ads", "true" );
 
 // testing update
-$ar = array ( "content" => "'B|'", "priority" => "098765432" );
-echo $obj->update_query( "ads", $ar, "advID = 120"  );
+//$ar = array ( "content" => "'B|'", "priority" => "098765432" );
+//echo $obj->update_query( "ads", $ar, "advID = 120"  );
 
 
 // testing insert
