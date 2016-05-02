@@ -320,7 +320,6 @@ public function logout ( )
 
 $obj = new class_person();
 
-
 // testing login
 /*
 $obj->setUserName( "taha"  );
