@@ -3,21 +3,21 @@
 class class_person {
  
 // Attributes
-	private $ID;
-	private $userName;
-	private $password;
-	private $firstName;
-	private $secondName;
-	private $lastName;
-	private $age;
-	private $email;
-	private $gender;
-	private $SSN;
-	private $birthDay;
-	private $birthMonth;
-	private $birthYear;
-	private $joinDate;
-	private $personTypeID;
+	protected $ID;
+	protected $userName;
+	protected $password;
+	protected $firstName;
+	protected $secondName;
+	protected $lastName;
+	protected $age;
+	protected $email;
+	protected $gender;
+	protected $SSN;
+	protected $birthDay;
+	protected $birthMonth;
+	protected $birthYear;
+	protected $joinDate;
+	protected $personTypeID;
         
 
 ///////// Setters and Getters
