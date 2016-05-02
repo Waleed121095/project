@@ -17,7 +17,7 @@ th, td {
       <table style="width:100%">
             
 <?php
-include 'class_uploader.php';
+include '../Classes/class_uploader.php';
 session_start();
 $_SESSION['id'] = 1;//this well be uploder or user session ID
 
@@ -66,7 +66,7 @@ echo '<tr>
             <input type="submit" name="action" value="show">
             </form> ';*/
             $flag = TRUE;
-            $c++;
+            $c++; // l2 Java! HAHAHAHAHAHAH peace TAHA
         }
      else 
         {
