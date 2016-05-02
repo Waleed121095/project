@@ -1,12 +1,12 @@
 <?php
-include_once 'class_stuff.php';
-include 'class_database.php';
+include_once '../Classes/class_stuff.php';
+include '../Classes/class_database.php';
 class class_uploader extends class_stuff
 {
     public  function __construct()
         {
  
-        
+
         } // End of constructor
     public function showAllRetouchedNews (  )
     {        
@@ -17,7 +17,7 @@ class class_uploader extends class_stuff
             
     }//end of showAllNews()
     
-    public function showNews( $id )
+public function showNews( $id )
     {
             $columns = 'content,ID';
             $condition  = 'ID='.$id;
@@ -27,17 +27,17 @@ class class_uploader extends class_stuff
             return $result;
     }//end of showNews ()
     
-    public function removeNews ( $id )
+public function removeNews ( $id )
     {
       $tableName = 'news';
-      $data_array_assoc = array("retouchState" => "0");
+      $data_array_assoc = array("appearState" => "0"); // Taha ^_^
       $condition = 'ID ='.$id;
       $db= new class_database();
       $db->update_query($tableName, $data_array_assoc, $condition);
       
     }//end of removeNews
 
-    public function addAttachment($newsID,$fileName,$content,$fileType,$size)
+public function addAttachment($newsID,$fileName,$content,$fileType,$size)
     {
       
         $tableName = 'NewsAttachment';
@@ -47,7 +47,8 @@ class class_uploader extends class_stuff
         
     }// end of addAttachment
 
-    public function publish( $NewsId , $uploderID ) //
+// ^_^
+public function publish( $NewsId , $uploderID ) //
     {
         $tableName = 'UploaderPublishNews';
         $data_array_assoc = array ("uploaderID"=> $uploderID , "uploadedNewsID" => $NewsId);
@@ -60,5 +61,3 @@ class class_uploader extends class_stuff
     
    
 } // End of class 
-
-
