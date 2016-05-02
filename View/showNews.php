@@ -1,6 +1,6 @@
 <html>
 <?php
-include 'class_uploader.php';
+include '../Classes/class_uploader.php';
 session_start();
 if(isset($_SESSION['id']))
 {
