@@ -90,7 +90,7 @@ public function database_query ( $database_query )
 		$result_query 	= mysql_query ( $database_query ); // querying 
 
 		if ( !$result_query ) 
-					die( 'Invalid query: ' . mysql_error() );
+					die( 'database_query() => Invalid query: ' . mysql_error() );
 		else
 					return $result_query;
 
@@ -198,7 +198,7 @@ public function getRow ( $selectQuery )
 		$result = $this->database_query ( $selectQuery );
 
 // testing
-//echo $selectQuery;
+//echo "getRow()   => ".$selectQuery . "<br>";
 
 		if ( !$result )
 			die ( "Database error in function getRow()" );
