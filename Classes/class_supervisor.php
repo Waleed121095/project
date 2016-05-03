@@ -1,26 +1,36 @@
 <?php
-// no thing to do 
 
 include_once 'class_stuff.php';
+include_once 'class_database.php';
 class class_supervisor extends class_stuff {
 
-
-// Methods
-
-
-public function updateText ( $text )
+public function updateText($textID,$content)
 	{
-		
-	} // end updateText()	
+            include_once './class_database.php';
+            $x = new class_database();
+            $query = " update news set content='$content' where ID=$textID ";
+            $x->database_query($query);
+            if($x){
+                return true;
+            }
+            else {
+                return FALSE;
+            }
+        }//end updateText
+	
 
-
-
-/*
- * I'm not sure if we pass the entire text that we remove or we'll make an id
- */
-public function removeText ( $text )
+public function removeText ($textID)
 	{
-		
+            include_once './class_database.php';
+            $x = new class_database();
+            $query = " update news set state='0' where ID=$textID ";
+            $x->database_query($query);
+            if($x){
+                return true;
+            }
+            else {
+                return FALSE;
+            }
 	} // end removeText()	
 
 } // end class_supervisor
