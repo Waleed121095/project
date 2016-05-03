@@ -12,8 +12,16 @@ class class_uploader extends class_stuff
     {        
             $query = 'SELECT news.appearState, news.ID ,news.title , news.content, news.category , news.linkID ,news.viewsNumber,news.retouchState, Links.linksID ,Links.path FROM news JOIN Links ON news.linkID = Links.linksID WHERE news.retouchState = 1';
             $db = new class_database();
-            $result = $db->database_query( $query );
-            return $result;   
+            $result_query= $db->database_query( $query );
+             while($line = mysql_fetch_array($result_query, MYSQL_ASSOC))
+                                        {
+                                         $results[] = $line;
+                                        }
+            if(isset($results))                            
+            {
+                return $results;
+        
+            }  
             
     }//end of showAllNews(),Abdulrahman
     
@@ -23,8 +31,16 @@ class class_uploader extends class_stuff
             $condition  = 'ID='.$id;
             $tableName = 'news';
             $db = new class_database();
-            $result = $db->select_query($columns, $tableName, $condition);
-            return $result;
+            $result_query = $db->select_query($columns, $tableName, $condition);
+            while($line = mysql_fetch_array($result_query, MYSQL_ASSOC))
+                                        {
+                                         $results[] = $line;
+                                        } 
+            if(isset($results))                            
+            {
+                return $results;
+        
+            }
     }//end of showNews (),Abdulrahman
     
     public function removeNews ( $id )
@@ -53,17 +69,16 @@ class class_uploader extends class_stuff
             $tableName = 'UploaderPublishNews';
             $data_array_assoc = array ("uploaderID"=> $uploderID , "uploadedNewsID" => $NewsId);
             $db= new class_database();
-            $result=  $db->insert_query($tableName, $data_array_assoc);
+            $db->insert_query($tableName, $data_array_assoc);
             // second chenge the appeareState to be 1
             $tableName2 = 'news';
             $data_array_assoc2 = array ("appearState" => 1 );
             $condition2 = 'ID='.$NewsId;
             $db->update_query($tableName2, $data_array_assoc2, $condition2);
-        
+            
         
     } // end of publish(),,Abdulrahman
     
    
 } // End of class 
-
 
