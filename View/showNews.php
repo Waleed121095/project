@@ -1,8 +1,13 @@
 <html>
 <?php
 include '../Classes/class_uploader.php';
+<<<<<<< HEAD
 session_start();// session need to login() function ,I used initial user ID session to use here ,I will re implement the sessions again ^_^
 if(!isset($_SESSION['id']))
+=======
+session_start();
+if(isset($_SESSION['id']))
+>>>>>>> 0b06f8cdc8f62faea1ac12b2246a260eb3c6616f
 {
     $_SESSION['id'] = 1;//this well be uploder or user session ID
   // echo 'iam in session ';

@@ -18,7 +18,11 @@ th, td {
             
 <?php
 include '../Classes/class_uploader.php';
+<<<<<<< HEAD
 session_start();// session need to login() function ,I used initial user ID session to use here ,I will re implement the sessions again ^_^
+=======
+session_start();
+>>>>>>> 0b06f8cdc8f62faea1ac12b2246a260eb3c6616f
 $_SESSION['id'] = 1;//this well be uploder or user session ID
 
 if(isset($_SESSION['id']))
@@ -66,7 +70,7 @@ echo '<tr>
             <input type="submit" name="action" value="show">
             </form> ';*/
             $flag = TRUE;
-            $c++;
+            $c++; // l2 Java! HAHAHAHAHAHAH peace TAHA
         }
      else 
         {
