@@ -1,9 +1,10 @@
 <html>
 <?php
-include 'class_uploader.php';
-session_start();
-if(isset($_SESSION['id']))
+include '../Classes/class_uploader.php';
+session_start();// session need to login() function ,I used initial user ID session to use here ,I will re implement the sessions again ^_^
+if(!isset($_SESSION['id']))
 {
+    $_SESSION['id'] = 1;//this well be uploder or user session ID
   // echo 'iam in session ';
 }
 $up= new class_uploader();
@@ -62,8 +63,11 @@ if (isset($_POST['remove']) && isset($_POST['newsID']))
 /////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////// show news////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////// show news///////////////////////////////////////////////
+//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 if (isset($_POST['newsID']))                         
 {                                                    
 $id = $_POST['newsID'];                            
@@ -78,6 +82,7 @@ $c= 0 ;
      echo '</br>';
      if( isset( $result[$c] ['content']))
         {
+         echo '<h1 style="color: red">'.$result[$c]['title'].'</h1>';
          echo $_POST['newsID'];
          echo $result[$c]['content'];
          echo '</br>';
