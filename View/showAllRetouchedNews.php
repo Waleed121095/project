@@ -21,7 +21,7 @@ include '../Classes/class_uploader.php';
 session_start();// session need to login() function ,I used initial user ID session to use here ,I will re implement the sessions again ^_^
 $_SESSION['id'] = 1;//this well be uploder or user session ID
 
-if(isset($_SESSION['id']))
+if( true  )
 {
  $id= $_SESSION['id'] ;  
      
@@ -42,9 +42,11 @@ echo '<tr>
  {
    
      
+			echo "hasuvfyilvasfvdfvaisvfapf";
      if( isset( $result[$c] ['title']))
         {
          
+			echo "hasuvfyilvasfvdfvaisvfapf";
            echo '<tr>
             <td>'.$result[$c]['ID'].'</td>   
             <td>'.$result [$c]['title'].'</td>
