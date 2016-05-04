@@ -8,7 +8,8 @@ public function updateText($textID,$content)
 	{
             include_once './class_database.php';
             $x = new class_database();
-            $query = " update news set content='$content' where ID=$textID ";
+            $arr = array ( "content" => " '$content' " );
+            $query = $x->update_query( "news" , $arr, "ID = $textID" );
             $x->database_query($query);
             if($x){
                 return true;
@@ -23,7 +24,8 @@ public function removeText ($textID)
 	{
             include_once './class_database.php';
             $x = new class_database();
-            $query = " update news set appearState=0 where ID=$textID ";
+            $arr = array ( "appearState" => "0" );
+            $query = $x->update_query( "news" , $arr, "ID = $textID" );
             $x->database_query($query);
             if($x){
                 return true;
