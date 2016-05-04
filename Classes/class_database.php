@@ -3,10 +3,10 @@
 class class_database {
 
 // i) Attributes
-	private $host			= "localhost";
-	private $userName		= "taha"; 			// This is default value, You can overwrite is 
-	private $password		= "estama";			// This is default value, You can overwrite is 	
-	private $databaseName		= "projectJournal3"; 		// Content Managemnet System database
+	private $host			= "127.0.0.1";
+	private $userName		= "root"; 			// This is default value, You can overwrite is 
+	private $password		= "";			// This is default value, You can overwrite is 	
+	private $databaseName		= "newJuournal2"; 		// Content Managemnet System database
 															// This name can be changed!
 	private $databaseConnection;
 
@@ -120,7 +120,7 @@ public function select_query ( $columns, $tableName, $condition="" )
 			$select .= " where " . $condition;
 //testing
 //echo "$select<br>";
-			return mysql_fetch_assoc ( $this->database_query( $select . ";" ) );
+			return  $this->database_query( $select . ";" ) ;// i removd mysql_fech_assoc ,it is give me rong result 
 		} // end else	
 
 	
