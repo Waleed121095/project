@@ -1,6 +1,6 @@
 <?php
 include_once 'class_stuff.php';
-include 'class_database.php';
+include_once 'class_database.php';
 class class_uploader extends class_stuff
 {
     public  function __construct()
@@ -8,6 +8,9 @@ class class_uploader extends class_stuff
  
         
         } // End of constructor
+
+
+
     public function showAllRetouchedNews ( )
     {        
             $query = 'SELECT news.appearState, news.ID ,news.title , news.content, news.category , news.linkID ,news.viewsNumber,news.retouchState, Links.linksID ,Links.path FROM news JOIN Links ON news.linkID = Links.linksID WHERE news.retouchState = 1';
@@ -25,7 +28,9 @@ class class_uploader extends class_stuff
             
     }//end of showAllNews(),Abdulrahman
     
-    public function showNews( $id )
+
+
+public function showNews( $id )
     {
             $columns = 'content,ID,title';
             $condition  = 'ID='.$id;
@@ -43,7 +48,7 @@ class class_uploader extends class_stuff
             }
     }//end of showNews (),Abdulrahman
     
-    public function removeNews ( $id )
+public function removeNews ( $id )
     {       // change apeare state to be 0 
             $tableName = 'news';
             $data_array_assoc = array("appearState" => "0");
@@ -53,7 +58,7 @@ class class_uploader extends class_stuff
      
     }//end of removeNews,,Abdulrahman
 
-    public function addAttachment($newsID,$fileName,$content,$fileType,$size)
+public function addAttachment($newsID,$fileName,$content,$fileType,$size)
     {
               
             $tableName = 'NewsAttachment';
@@ -63,7 +68,7 @@ class class_uploader extends class_stuff
         
     }// end of addAttachment,,Abdulrahman
 
-    public function publish( $NewsId , $uploderID ) //
+public function publish( $NewsId , $uploderID ) //
     {
             //first insert into  UploaderPublishNews the news ID and uploader ID
             $tableName = 'UploaderPublishNews';
@@ -81,4 +86,3 @@ class class_uploader extends class_stuff
     
    
 } // End of class 
-
