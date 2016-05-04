@@ -3,10 +3,10 @@
 class class_database {
 
 // i) Attributes
-	private $host			= "127.0.0.1";
-	private $userName		= "root"; 			// This is default value, You can overwrite is 
-	private $password		= "";			// This is default value, You can overwrite is 	
-	private $databaseName		= "newJuournal2"; 		// Content Managemnet System database
+	private $host			= "localhost";
+	private $userName		= "taha"; 			// This is default value, You can overwrite is 
+	private $password		= "estama";			// This is default value, You can overwrite is 	
+	private $databaseName		= "projectJournal3"; 		// Content Managemnet System database
 															// This name can be changed!
 	private $databaseConnection;
 
@@ -156,11 +156,11 @@ public function insert_query ( $tableName, $data_aray_assoc )
 	// building query
 		$insert .= $columns . $values . ";"; 
 
+echo "<BR>Generated insert  :: " . $insert . "<BR>";
+
 // Executing query
 $this->database_query( $insert );
 
-// testing
-return $insert;
 	} // end insert_query()
 
 
