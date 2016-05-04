@@ -18,6 +18,12 @@ public function __construct () 	// 1) Open mysql connection
 		$this->database_selectDB ( $this->databaseName );
 // ********
 	} // end __construct	
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> refs/remotes/pSWE/master
 // Retruns connection!
 private function database_connect ( $host, $userName, $password )
 	{
@@ -29,6 +35,11 @@ private function database_connect ( $host, $userName, $password )
 		else
 			die("Database connection error!");
 	} // end database_connect()	
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/pSWE/master
 // returns ture or die
 private function database_selectDB ( $databaseName )
 	{
@@ -38,6 +49,10 @@ private function database_selectDB ( $databaseName )
 			return $select; // boolean
 		else
 			die ( "No Database is selected!" );
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/pSWE/master
 	} // end database_selectDB()	
 public function database_close ()
 	{
@@ -55,6 +70,11 @@ public function clean ( $string )
  
 		return $string;
 	} // end clean()
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/pSWE/master
 // It's public temporary !
 // return tables; need to be fetched ;
 public function database_query ( $database_query )
@@ -91,8 +111,15 @@ public function select_query ( $columns, $tableName, $condition="" )
 	
 	} // end select_query
 	
+<<<<<<< HEAD
 //INSERT INTO table_name (column1,column2,column3,...)
 //VALUES (value1,value2,value3,...);
+=======
+
+//INSERT INTO table_name (column1,column2,column3,...)
+//VALUES (value1,value2,value3,...);
+
+>>>>>>> refs/remotes/pSWE/master
 // $ar = array ( "colName" => "1" .. // inserting a number
 // $ar = array ( "colName" =. "'string'" ... // inserting a string 
 // returns the query [ testing ]
@@ -101,6 +128,7 @@ public function insert_query ( $tableName, $data_aray_assoc )
 		$insert  = "INSERT INTO $tableName ";
 		$columns = " ( ";
 		$values  = " VALUES ( ";
+<<<<<<< HEAD
 	// (column1, ... ,column n )
 		foreach ( $data_aray_assoc as $key => $value )
 			$columns .= " $key, ";	
@@ -117,10 +145,40 @@ echo "<BR>Generated insert  :: " . $insert . "<BR>";
 // Executing query
 $this->database_query( $insert );
 	} // end insert_query()
+=======
+
+	// (column1, ... ,column n )
+		foreach ( $data_aray_assoc as $key => $value )
+			$columns .= " $key, ";	
+
+		$columns  = rtrim ( $columns, ", " ); // Removing the last comma.
+		$columns .= " )";					  // Closing the parentheses.
+
+	// (value1, ... ,value n )
+		foreach ( $data_aray_assoc as $value )
+				$values .= "$value, ";	
+
+		$values  = rtrim ( $values, ", " );
+		$values .= " )";
+
+	// building query
+		$insert .= $columns . $values . ";"; 
+
+echo "<BR>Generated insert  :: " . $insert . "<BR>";
+
+// Executing query
+$this->database_query( $insert );
+
+	} // end insert_query()
+
+
+
+>>>>>>> refs/remotes/pSWE/master
 // returns the query [ testing ]
 public function update_query ( $tableName, $data_array_assoc, $condition)
 	{
 		$updateQuery = "UPDATE $tableName SET ";
+<<<<<<< HEAD
 		foreach ( $data_array_assoc as $key => $value )
 			$updateQuery .= " $key = $value, ";			
 		$updateQuery  = rtrim ( $updateQuery, ", " );
@@ -151,16 +209,76 @@ public function result_row_number ( $result )
 	{
 	 	return mysql_num_rows ( $result );	
 	} // end result_row_number()	
+=======
+
+		foreach ( $data_array_assoc as $key => $value )
+			$updateQuery .= " $key = $value, ";			
+
+		$updateQuery  = rtrim ( $updateQuery, ", " );
+		$updateQuery .= " WHERE $condition;";
+
+// Executing query
+$this->database_query ( $updateQuery );
+
+// testing
+return $updateQuery;	
+
+	} // end update_query()
+
+
+// returns associative array.
+public function getRow ( $selectQuery )
+	{
+		$selectQuery = strtoupper ( $selectQuery ); // To make the strstr() easy!
+		if ( !strstr( $selectQuery, "LIMIT" ) )
+			{
+			$selectQuery = rtrim ( $selectQuery, ";" );
+			$selectQuery  .= " LIMIT 0,1;"; // Ensuring to get one row
+			} // end if
+
+		$result = $this->database_query ( $selectQuery );
+
+// testing
+//echo "getRow()   => ".$selectQuery . "<br>";
+
+		if ( !$result )
+			die ( "Database error in function getRow()" );
+
+
+		else
+			return mysql_fetch_assoc ( $result );
+
+	} // end getRow()	
+
+
+
+
+
+public function result_row_number ( $result )
+	{
+	 	return mysql_num_rows ( $result );	
+	} // end result_row_number()	
+
+
+
+
+
+>>>>>>> refs/remotes/pSWE/master
 ///////////////////////
 } // end class_database	
 ///////////////////////
 // This is just for testing;
 ////////////// ////////////// ////////////// //////////////
 //$obj = new class_database();
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/pSWE/master
 // testing getRow()
 //$ar = $obj->getRow( "select * from ads;" );
 //echo $ar['advID'];
 //echo $ar['content'];
+<<<<<<< HEAD
 // testing delete
 //echo $obj->delete_query( "ads", "true" );
 // testing update
@@ -169,11 +287,32 @@ public function result_row_number ( $result )
 // testing insert
 //$asso = array ( "content" => "'content'", "advID" => "2" );
 //echo $obj->insert_query( "ads", $asso );
+=======
+
+// testing delete
+//echo $obj->delete_query( "ads", "true" );
+
+// testing update
+//$ar = array ( "content" => "'B|'", "priority" => "098765432" );
+//echo $obj->update_query( "ads", $ar, "advID = 120"  );
+
+
+// testing insert
+//$asso = array ( "content" => "'content'", "advID" => "2" );
+//echo $obj->insert_query( "ads", $asso );
+
+>>>>>>> refs/remotes/pSWE/master
 // testing select_qury
 //$res = $obj->select_query( "*", "address", "addressChildID < 3" );
 //echo $res['addressChildID'] . "<br>";
 //echo $res['addressName'] . "<br>";
+<<<<<<< HEAD
 //}
+=======
+
+//}
+
+>>>>>>> refs/remotes/pSWE/master
 //$class_methods = get_class_methods('class_database');
 //foreach ($class_methods as $method_name) 
  //   echo "$method_name<br>";

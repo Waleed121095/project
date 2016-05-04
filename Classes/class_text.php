@@ -3,15 +3,27 @@
 // All getter Method must take id as a prammetter 
 class class_text {
 
-	private $date;
-	private $state;
-	private $content;
-	private $title;
-	private $viewsNumber;
-	private $category;
-	private $link;
+	protected $date;
+	protected $appearState;
+	protected $retouchState;
+	protected $content;
+	protected $title;
+	protected $viewsNumber;
+	protected $category;
+	protected $link;
 
 //Methods
+
+public function setRetouchState ( $retouchState )
+	{
+		$this->retouchState = $retouchState;
+	} // end setRetouchState()	
+
+public function getRetouchState ( )
+	{
+		return $this->retouchState;
+	} // end getRetouchState()	
+
     public function setDate( $fDate )
     {
             $this->date = $fDate;
@@ -36,17 +48,17 @@ class class_text {
             return $this->category ;
     }// end of fetCatagory
     
-    public function setContact ( $fContact )
+    public function setContent( $fContact )
     {
         // what are validation here ??
             $this->content = $fContact;
             return TRUE;
     }// end of setContact
     
-    public function getContact ()
+    public function getContent ()
     {
             return $this->content;
-    } //end of getContact
+    } //end of getContent()
     
     public function  setLink ( $fLink )
     {
@@ -61,29 +73,21 @@ class class_text {
             return $this->link;
     }// end of getLink
     
-    public function setState ( $fState )
+    public function setAppearState ( $fState )
     {
           // what are validations here ??
-            $this->state = $fState;
+            $this->appearState = $fState;
             return TRUE;
     } // end of setState
     
-    public function getState ()
+    public function getAppearState ()
     {
-        return $this->state;
+        return $this->appearState;
     }// end of getState
     
     public function setTitle ( $fTitle )
     {
-        if(strlen($fTitle)>40 )
-        {
             $this->title = $fTitle;
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
     }// end of setTitle
     
     public function getTitle ()
@@ -102,7 +106,7 @@ class class_text {
             {
                 return FALSE;
             }// enf else 
-    }// end of setVienaNumber
+    }// end of setViewsNumber
     
     public function getViewsNumber()
     {

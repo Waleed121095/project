@@ -5,11 +5,8 @@ class class_article extends class_text{
     private $articleID;
     private $subject="";
     
-        public  function __construct() {
-
-        } // End of constructor
         
-public function set_ArticleID($articleID)
+public function setArticleID($articleID)
 {
     if (is_numeric($articleID)) {     
 $this -> articleID = $articleID;
@@ -21,19 +18,19 @@ return TRUE;
  } // end of else
 } // End of function
 
-public function set_Subject($subject)
+public function setSubject($subject)
 {
 $this -> subject = $subject;
 } // End of function
 
 
-public function get_ArticleID()
+public function getArticleID()
 {
 return $this -> articleID;
 } // End of function
 
 
-public function get_Subject()
+public function getSubject()
 {
 return $this -> subject;
 } // End of function

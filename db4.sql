@@ -28,11 +28,11 @@ CREATE TABLE `Ads` (
   `attachment` text,
   `category` text,
   `state` text,
-  `expirationDate` text,
+  `period` int(11) DEFAULT NULL,
   `renewsNumber` int(11) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
   PRIMARY KEY (`advID`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `Ads` (
 
 LOCK TABLES `Ads` WRITE;
 /*!40000 ALTER TABLE `Ads` DISABLE KEYS */;
-INSERT INTO `Ads` VALUES (100,'dddd',NULL,NULL,NULL,NULL,NULL,NULL),(101,'hdgaskjdskjadjsa;lkd;lsakd;lsd;ock',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `Ads` VALUES (2,'content',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Ads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,6 +172,7 @@ CREATE TABLE `MappingPersonTypeIDString` (
 
 LOCK TABLES `MappingPersonTypeIDString` WRITE;
 /*!40000 ALTER TABLE `MappingPersonTypeIDString` DISABLE KEYS */;
+INSERT INTO `MappingPersonTypeIDString` VALUES (0,'User'),(1,'Admin'),(2,'Uploader'),(3,'Disk'),(4,'Editor'),(5,'Supervisor');
 /*!40000 ALTER TABLE `MappingPersonTypeIDString` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +230,7 @@ CREATE TABLE `Person` (
   PRIMARY KEY (`ID`),
   KEY `personTypeID` (`personTypeID`),
   CONSTRAINT `person_ibfk_1` FOREIGN KEY (`personTypeID`) REFERENCES `MappingPersonTypeIDString` (`personTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,6 +239,7 @@ CREATE TABLE `Person` (
 
 LOCK TABLES `Person` WRITE;
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+INSERT INTO `Person` VALUES (1,'taha','30274c47903bd1bac7633bbf09743149ebab805f','a@b.com',22,'male','taha','magdy','taha',7721835,23,23,234,'test',1);
 /*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -542,7 +544,7 @@ CREATE TABLE `address` (
   UNIQUE KEY `adressName` (`addressName`),
   KEY `addressParentID` (`addressParentID`),
   CONSTRAINT `address_ibfk_1` FOREIGN KEY (`addressParentID`) REFERENCES `Address` (`addressChildID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -551,7 +553,6 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'lalla',NULL),(2,'lalla2',NULL),(3,'lalla3',NULL);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -599,4 +600,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-30 23:21:14
+-- Dump completed on 2016-05-02 15:01:54
