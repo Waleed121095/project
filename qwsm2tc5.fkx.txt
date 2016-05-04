@@ -1,0 +1,13 @@
+﻿class_disk +html
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Database
+# Changes to be committed:
+#	modified:   Classes/class_database.php
+#	modified:   Classes/class_disk.php
+#	new file:   View/edit.png
+#	new file:   View/index.php
+#	new file:   View/php.css
+#	new file:   View/shownewss.php
+#
+
