@@ -23,7 +23,7 @@ public function removeText ($textID)
 	{
             include_once './class_database.php';
             $x = new class_database();
-            $query = " update news set state='0' where ID=$textID ";
+            $query = " update news set appearState=0 where ID=$textID ";
             $x->database_query($query);
             if($x){
                 return true;
@@ -33,7 +33,25 @@ public function removeText ($textID)
             }
 	} // end removeText()	
 
+//////////////////////////
 } // end class_supervisor
-	
+//////////////////////////
 
-?>
+
+// This is just for testing;
+
+/*
+$obj = new class_supervisor();
+
+$obj->setUserName ( "taha" );
+$obj->setPasswd   ( "passwd");
+
+if ( $obj->login() )
+{
+	echo "YES, Supervisor loged in!! <BR>";
+	echo "It's hashPasswd is " . $obj->getPasswd() ."<BE>";
+}
+
+$obj->removeText( 1 );
+$obj->updateText( 1, "Hi, My name is Ahmed Alaa ^_^" );
+*/
