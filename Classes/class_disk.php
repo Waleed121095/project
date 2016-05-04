@@ -12,8 +12,8 @@ class class_disk extends class_stuff{
         } // End of constructor
 
 
-        //precondition no select any Quiry
-        //postcondition select 3 coloum ID content RetouchState
+        //pre Condition no select any Quiry
+        //post Condition select 3 coloum ID content RetouchState
         function findPostById($postID)
         {
          // $obj = new class_database();
@@ -105,7 +105,7 @@ class class_disk extends class_stuff{
           
             $result = $this->dataBase->select_query("ID , content , retouchState", "news" , "retouchState = 0");
             return $this->searchGrid($result, true , "shownewss.php");
-        } // End of function retouch
+        } // End of Function retouch 
             
     } //end class
   
