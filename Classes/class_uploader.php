@@ -57,8 +57,11 @@ class class_uploader extends class_stuff
     {
               
             $tableName = 'NewsAttachment';
+$fileName = "'".$fileName."'";
+            $content = "'".$content."'";
+            $fileType= "'".$fileType."'";
             $data_aray_assoc = array ('id' =>$newsID, 'attachmentName'=>$fileName, 'attachmentType'=>$fileType, 'attachmentSize'=>$size, 'content'=>$content);
-            $db= new class_database();
+          $db= new class_database();
             $db->insert_query($tableName, $data_aray_assoc);
         
     }// end of addAttachment,,Abdulrahman
