@@ -5,7 +5,7 @@ include_once 'class_database.php';
 class class_disk extends class_stuff{
     public  $id ;
     public  $content ;
-    public  $retouchState ;
+    public  $retouchState ; //  check if Text is retouched
     private $dataBase ; // referance of database class
     public  function __construct() {
         $this->dataBase = new class_database();
